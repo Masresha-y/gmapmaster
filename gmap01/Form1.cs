@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using AForge.Video;
+using Timer = System.Timers.Timer;
 
 
 namespace gmap01
@@ -15,15 +16,22 @@ namespace gmap01
 
     public partial class Form1 : Form
     {
+        List<Pointlatlong> pointlatlong = new List<Pointlatlong>();
+
+        int index = 0;
+
+        GMapOverlay markers = new GMapOverlay("markers");
+        GMapMarker marker = new GMarkerGoogle(new PointLatLng(40.682640, -73.868470), GMarkerGoogleType.blue);
 
         //Video Stream Reading 
         MJPEGStream streamvideo;
         MJPEGStream streamvideo2;
 
-        private List<PointLatLng> _points;
-
+        public List<PointLatLng> _points;
+      
         System.IO.Ports.SerialPort Port;
         bool isClosed = false;
+
 
         public Form1()
         {
@@ -66,23 +74,55 @@ namespace gmap01
         void Form1_Load(object sender, EventArgs e)
         {
 
+            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+            MyTimer.Interval = (1000);
+            MyTimer.Tick += new EventHandler(MyTimer_Tick);
+            MyTimer.Start();    //calling the timer
+
+            //end of timer
+
             Thread Helo = new Thread(ListenSerial);
             Helo.Start();
 
+            map.MinZoom = 0;
+            map.MaxZoom = 100;
+            map.Zoom = 18;
 
-            GMapProviders.GoogleMap.ApiKey = @"AIzaSyD5KRIisFJcnRpuPbXnnFuFyIwDoKBgwfU";
-            GMaps.Instance.Mode = AccessMode.ServerAndCache;
-            map.CacheLocation = @"cache";
-            map.DragButton = MouseButtons.Left;
-
-            map.MapProvider = GMapProviders.GoogleMap;
-            map.ShowCenter = false;
-            map.MinZoom = 10;
-            map.MaxZoom = 18;
-            map.Zoom = 14;
-            map.SetPositionByKeywords("Mysuru, India");
-            LoadRandomPointsForRoute();
         }
+
+
+        private void MyTimer_Tick(object sender, EventArgs e)
+        {
+          
+            try
+            {
+                map.MapProvider = BingMapProvider.Instance;
+                GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
+                GMapProvider.WebProxy = null;
+                // gMapControl1.SetPositionByKeywords("Atlantic Ave,USA");
+                map.Position = new GMap.NET.PointLatLng(_points[0].Lat, _points[0].Lng);
+                map.ShowCenter = false;
+                map.Overlays.Add(markers);
+                markers.Markers.Add(marker);  //adding the blue marker
+                index++;
+                if (index < pointlatlong.Count - 1)
+                {
+                    marker.Position = new PointLatLng(pointlatlong[index].lat, pointlatlong[index].lng);
+                    GMapMarker marker1 = new GMarkerGoogle(new PointLatLng(40.684175, -73.862904), GMarkerGoogleType.green);
+                    markers.Markers.Add(marker1);   //adding the green marker 
+
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+
+
+        GMapOverlay markersOverlay = new GMapOverlay();
 
         void LoadRandomPointsForRoute()
         {
@@ -93,6 +133,8 @@ namespace gmap01
             _points.Add(mysuruPoint);
             _points.Add(bengaluruPoint);
         }
+
+
 
         void LoadRndPtsForRt()
         {
@@ -124,9 +166,9 @@ namespace gmap01
                         delegate
                         {
                             lblLat.Text = splittedArray[1];
-                            txtLat.Text = splittedArray[1];
+                           // txtLat.Text = splittedArray[1];
                             lblLongtiude.Text = splittedArray[2];
-                            txtLng.Text = splittedArray[2];
+                          //  txtLng.Text = splittedArray[2];
                             label11.Text = splittedArray[4]+"KM/HR";
 
                         }
@@ -180,53 +222,35 @@ namespace gmap01
 
         void btnLoadIntoMap_Click(object sender, EventArgs e)
         {
-            if (!(txtLat.Text.Trim().Equals("") && txtLng.Text.Trim().Equals("")))
-            {
-                // Reverse Geococding
-                var point = new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text));
-                LoadAndMark(point);
-                GeoCoderStatusCode statusCode;
-                var placeMark = GoogleMapProvider.Instance.GetPlacemark(point, out statusCode);
-                if (statusCode == GeoCoderStatusCode.OK)
-                {
-                    txtAddress.Text = placeMark?.Address;
-                }
-                else
-                {
-                    txtAddress.Text = "Something Went Wrong.  Returned Status: " + statusCode;
-                }
+            map.Position = new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text));
+            var markers = new GMapOverlay("markers");
+            var marker = new GMarkerGoogle(new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text)), GMarkerGoogleType.green);
+            markers.Markers.Add(marker);
+            map.Overlays.Add(markers);
 
-            }
-            else
-            {
-                // Geocoding
-                if (!txtAddress.Text.Trim().Equals(""))
-                {
-                    GeoCoderStatusCode statusCode;
-                    var pointLatLng = GoogleMapProvider.Instance.GetPoint(txtAddress.Text.Trim(), out statusCode);
-                    if (statusCode == GeoCoderStatusCode.OK)
-                    {
-
-                        txtLat.Text = pointLatLng.Value.Lat.ToString();
-                        txtLng.Text = pointLatLng.Value.Lng.ToString();
-                        LoadAndMark(pointLatLng.Value);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Something Went Wrong.  Returned Status: " + statusCode);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Data To Load");
-                }
-            }
         }
 
-        void btnAddPoint_Click(object sender, EventArgs e)
+
+        private void Addpoints()
         {
-            _points.Add(new PointLatLng(Convert.ToDouble(txtLat.Text),
-                Convert.ToDouble(txtLng.Text)));
+            try
+            {
+                Bitmap tank = (Bitmap)Image.FromFile("img/tank.png");
+
+                var marker = new GMarkerGoogle(new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text)), tank);
+                markers.Markers.Clear();
+                markers.Markers.Add(marker);
+
+                // gMapControl1.Overlays.Add(markers);
+
+                _points.Add(new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text)));
+
+                pointlatlong.Add(new Pointlatlong() { lat = Convert.ToDouble(txtLat.Text), lng = Convert.ToDouble(txtLng.Text) });
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         void btnClearList_Click(object sender, EventArgs e) => _points = new List<PointLatLng>();
@@ -234,27 +258,26 @@ namespace gmap01
         List<int> routeOverlays = new List<int>();
         void btnGetRouteInfo_Click(object sender, EventArgs e)
         {
-            // GDirections ss;
-            // GMapProviders.GoogleMap.GetDirections(out ss, _points[0], _points[1], false, false, false, false, false);
 
-            var route = GoogleMapProvider.Instance.GetRoute(_points[0], _points[1], false, false, 14);
-           // GMapRoute routess = new GMapRoute(__points, "rt");
-            GMapRoute routess = new GMapRoute(_points, "A walk in the park");
-            routess.Stroke = new Pen(Color.Red, 3);
-           
-          //  var r = new GMapRoute(ss.Route, "My Route")
-          //  {
-                //Stroke = new Pen(Color.Red, 5)
-          //  };
+            try
+            {
+                var route = GoogleMapProvider.Instance.GetRoute(_points[0], _points[1], false, false, 15);
+                GMapRoute r = new GMapRoute(_points, "my route")
+                {
+                    Stroke = new Pen(Color.Red, 5)
+                };
+                var routes = new GMapOverlay("routes");
+                routes.Routes.Add(r);
+                map.Overlays.Add(routes);
+
+               
+
+            }
+            catch (Exception)
+            {
 
 
-            var routes = new GMapOverlay("routes");
-            routes.Routes.Add(routess);
-            map.Overlays.Add(routes);
-            //LoadMap(ss.Route[0]);
-            map.RefreshMap();
-           // lblDistance.Text = ss.Distance;
-            routeOverlays.Add(map.Overlays.Count - 1);
+            }
 
         }
 
@@ -266,7 +289,7 @@ namespace gmap01
                 Fill = new SolidBrush(Color.BurlyWood)
             };
 
-            //Long_point > Long_LowerLeft + Lat_point * (Long_UpperLeft - Long_LowerLeft) / (Lat_UpperLeft - Lat_LowerLeft)
+          
             var polygons = new GMapOverlay("polygons");
             polygons.Polygons.Add(polygon);
             map.Overlays.Add(polygons);
@@ -365,7 +388,6 @@ namespace gmap01
         }
 
 
-
         private void btnSearchInsidePoly_Click(object sender, EventArgs e)
         {
             var pointToSearch = new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text));
@@ -403,6 +425,7 @@ namespace gmap01
 
         private bool SearchInsidePolygons(PointLatLng pointToSearch)
         {
+            
             var overlays = map.Overlays;
             foreach (var overlay in overlays)
             {
@@ -431,6 +454,22 @@ namespace gmap01
         private void btnStartCam2_Click(object sender, EventArgs e)
         {
             streamvideo2.Start();
+        }
+
+        private void txtLat_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLat.Text.Length > 0)
+            {
+                Addpoints();
+            }
+        }
+
+        private void txtLng_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLng.Text.Length > 0)
+            {
+                Addpoints();
+            }
         }
     }
 }

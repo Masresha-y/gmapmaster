@@ -34,7 +34,6 @@
             this.btnLoadIntoMap = new System.Windows.Forms.Button();
             this.txtLng = new System.Windows.Forms.TextBox();
             this.txtLat = new System.Windows.Forms.TextBox();
-            this.btnAddPoint = new System.Windows.Forms.Button();
             this.btnClearList = new System.Windows.Forms.Button();
             this.btnGetRouteInfo = new System.Windows.Forms.Button();
             this.lblDistance = new System.Windows.Forms.Label();
@@ -44,33 +43,33 @@
             this.chkMouseClick = new System.Windows.Forms.CheckBox();
             this.btnSearchInsidePoly = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnStop = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.lblLatitude = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button12 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.button13 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button15 = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.lblLatitude = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.lblLongtiude = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -98,9 +97,9 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.lblLat = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.lblLat = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStartCam2 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -114,11 +113,11 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -173,7 +172,7 @@
             // 
             // btnLoadIntoMap
             // 
-            this.btnLoadIntoMap.Location = new System.Drawing.Point(6, 386);
+            this.btnLoadIntoMap.Location = new System.Drawing.Point(6, 355);
             this.btnLoadIntoMap.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnLoadIntoMap.Name = "btnLoadIntoMap";
             this.btnLoadIntoMap.Size = new System.Drawing.Size(74, 23);
@@ -189,6 +188,7 @@
             this.txtLng.Name = "txtLng";
             this.txtLng.Size = new System.Drawing.Size(111, 20);
             this.txtLng.TabIndex = 16;
+            this.txtLng.TextChanged += new System.EventHandler(this.txtLng_TextChanged);
             // 
             // txtLat
             // 
@@ -197,17 +197,7 @@
             this.txtLat.Name = "txtLat";
             this.txtLat.Size = new System.Drawing.Size(100, 20);
             this.txtLat.TabIndex = 17;
-            // 
-            // btnAddPoint
-            // 
-            this.btnAddPoint.Location = new System.Drawing.Point(8, 338);
-            this.btnAddPoint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnAddPoint.Name = "btnAddPoint";
-            this.btnAddPoint.Size = new System.Drawing.Size(74, 23);
-            this.btnAddPoint.TabIndex = 21;
-            this.btnAddPoint.Text = "Add Point";
-            this.btnAddPoint.UseVisualStyleBackColor = true;
-            this.btnAddPoint.Click += new System.EventHandler(this.btnAddPoint_Click);
+            this.txtLat.TextChanged += new System.EventHandler(this.txtLat_TextChanged);
             // 
             // btnClearList
             // 
@@ -311,6 +301,32 @@
             this.panel1.Size = new System.Drawing.Size(1603, 44);
             this.panel1.TabIndex = 30;
             // 
+            // button6
+            // 
+            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Location = new System.Drawing.Point(1556, 0);
+            this.button6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(35, 35);
+            this.button6.TabIndex = 6;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(1514, 5);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(26, 25);
+            this.button5.TabIndex = 5;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
@@ -349,32 +365,6 @@
             this.label3.Size = new System.Drawing.Size(165, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "Admin Dashboard";
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(1514, 5);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(26, 25);
-            this.button5.TabIndex = 5;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(1556, 0);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(35, 35);
-            this.button6.TabIndex = 6;
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -439,7 +429,6 @@
             this.panel2.Controls.Add(this.btnLoadIntoMap);
             this.panel2.Controls.Add(this.btnClearList);
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.btnAddPoint);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.button14);
             this.panel2.Controls.Add(this.txtLng);
@@ -475,17 +464,6 @@
             this.btnStop.Text = "STOP CAMERA";
             this.btnStop.UseVisualStyleBackColor = true;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(-2, 302);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 16);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Longtide";
-            // 
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
@@ -513,6 +491,41 @@
             this.button10.Text = "ClearWaypoint";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel14.Controls.Add(this.lblLatitude);
+            this.panel14.Controls.Add(this.label26);
+            this.panel14.Location = new System.Drawing.Point(464, 7);
+            this.panel14.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(131, 74);
+            this.panel14.TabIndex = 33;
+            // 
+            // lblLatitude
+            // 
+            this.lblLatitude.AutoSize = true;
+            this.lblLatitude.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLatitude.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblLatitude.Location = new System.Drawing.Point(13, 45);
+            this.lblLatitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLatitude.Name = "lblLatitude";
+            this.lblLatitude.Size = new System.Drawing.Size(0, 21);
+            this.lblLatitude.TabIndex = 4;
+            this.lblLatitude.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label26.Location = new System.Drawing.Point(16, 8);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(67, 20);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Latitude";
             // 
             // button11
             // 
@@ -558,6 +571,17 @@
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(-2, 302);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 16);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Longtide";
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
@@ -584,6 +608,17 @@
             this.button13.Text = "Track Status";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(-2, 266);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 16);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Latitude";
             // 
             // pictureBox3
             // 
@@ -638,52 +673,6 @@
             this.button15.Text = "Dashboard";
             this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button15.UseVisualStyleBackColor = true;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(-2, 266);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 16);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "Latitude";
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.panel14.Controls.Add(this.lblLatitude);
-            this.panel14.Controls.Add(this.label26);
-            this.panel14.Location = new System.Drawing.Point(464, 7);
-            this.panel14.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(131, 74);
-            this.panel14.TabIndex = 33;
-            // 
-            // lblLatitude
-            // 
-            this.lblLatitude.AutoSize = true;
-            this.lblLatitude.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLatitude.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblLatitude.Location = new System.Drawing.Point(13, 45);
-            this.lblLatitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLatitude.Name = "lblLatitude";
-            this.lblLatitude.Size = new System.Drawing.Size(0, 21);
-            this.lblLatitude.TabIndex = 4;
-            this.lblLatitude.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label26.Location = new System.Drawing.Point(16, 8);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(67, 20);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Latitude";
             // 
             // panel15
             // 
@@ -1000,6 +989,18 @@
             this.panel8.Size = new System.Drawing.Size(136, 74);
             this.panel8.TabIndex = 40;
             // 
+            // lblLat
+            // 
+            this.lblLat.AutoSize = true;
+            this.lblLat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLat.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblLat.Location = new System.Drawing.Point(19, 42);
+            this.lblLat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLat.Name = "lblLat";
+            this.lblLat.Size = new System.Drawing.Size(28, 15);
+            this.lblLat.TabIndex = 5;
+            this.lblLat.Text = "120";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1023,18 +1024,6 @@
             this.label16.Size = new System.Drawing.Size(67, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Latitude";
-            // 
-            // lblLat
-            // 
-            this.lblLat.AutoSize = true;
-            this.lblLat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLat.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblLat.Location = new System.Drawing.Point(19, 42);
-            this.lblLat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLat.Name = "lblLat";
-            this.lblLat.Size = new System.Drawing.Size(28, 15);
-            this.lblLat.TabIndex = 5;
-            this.lblLat.Text = "120";
             // 
             // btnStart
             // 
@@ -1167,12 +1156,12 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1208,7 +1197,6 @@
         private System.Windows.Forms.Button btnLoadIntoMap;
         private System.Windows.Forms.TextBox txtLng;
         private System.Windows.Forms.TextBox txtLat;
-        private System.Windows.Forms.Button btnAddPoint;
         private System.Windows.Forms.Button btnClearList;
         private System.Windows.Forms.Button btnGetRouteInfo;
         private System.Windows.Forms.Label lblDistance;
