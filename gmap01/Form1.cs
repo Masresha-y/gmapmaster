@@ -44,8 +44,9 @@ namespace gmap01
             streamvideo2.NewFrame += GetNewframe2;
 
             Port = new System.IO.Ports.SerialPort();
-            Port.PortName = "COM8";
-            Port.BaudRate = 9600;
+           
+            Port.PortName = "COM9";
+            Port.BaudRate =57600;
             Port.ReadTimeout = 500;
 
             try
@@ -88,6 +89,9 @@ namespace gmap01
             map.MaxZoom = 100;
             map.Zoom = 18;
 
+
+
+
         }
 
 
@@ -99,7 +103,7 @@ namespace gmap01
                 map.MapProvider = BingMapProvider.Instance;
                 GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
                 GMapProvider.WebProxy = null;
-                // gMapControl1.SetPositionByKeywords("Atlantic Ave,USA");
+               // map.SetPositionByKeywords("Atlantic Ave,USA");
                 map.Position = new GMap.NET.PointLatLng(_points[0].Lat, _points[0].Lng);
                 map.ShowCenter = false;
                 map.Overlays.Add(markers);
@@ -329,9 +333,9 @@ namespace gmap01
 
                 // Display Address
                 if (addresses != null)
-                    txtAddress.Text = "Address: \n-----------------------\n" + addresses[0];
+                    textBox1.Text = "Address: \n-----------------------\n" + addresses[0];
                 else
-                    txtAddress.Text = "Unable To Load Address";
+                    textBox1.Text = "Unable To Load Address";
                 //var res = map.Overlays[1].Polygons[0].IsInside(map.Position);
                 //MessageBox.Show(res.ToString());
 
@@ -462,6 +466,25 @@ namespace gmap01
             {
                 Addpoints();
             }
+
+
+            try
+            {
+                var route = GoogleMapProvider.Instance.GetRoute(_points[0], _points[1], false, false, 15);
+                GMapRoute r = new GMapRoute(_points, "my route")
+                {
+                    Stroke = new Pen(Color.Red, 5)
+                };
+                var routes = new GMapOverlay("routes");
+                routes.Routes.Add(r);
+                map.Overlays.Add(routes);
+
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
 
         private void txtLng_TextChanged(object sender, EventArgs e)
@@ -469,6 +492,25 @@ namespace gmap01
             if (txtLng.Text.Length > 0)
             {
                 Addpoints();
+            }
+
+            try
+            {
+                var route = GoogleMapProvider.Instance.GetRoute(_points[0], _points[1], false, false, 14);
+                GMapRoute r = new GMapRoute(_points, "my route")
+                {
+                    Stroke = new Pen(Color.Red, 5)
+                };
+                var routes = new GMapOverlay("routes");
+                routes.Routes.Add(r);
+                map.Overlays.Add(routes);
+
+
+            }
+            catch (Exception)
+            {
+
+
             }
         }
     }

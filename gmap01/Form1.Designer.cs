@@ -31,15 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.map = new GMap.NET.WindowsForms.GMapControl();
-            this.btnLoadIntoMap = new System.Windows.Forms.Button();
             this.txtLng = new System.Windows.Forms.TextBox();
             this.txtLat = new System.Windows.Forms.TextBox();
             this.btnClearList = new System.Windows.Forms.Button();
-            this.btnGetRouteInfo = new System.Windows.Forms.Button();
             this.lblDistance = new System.Windows.Forms.Label();
             this.btnAddPoly = new System.Windows.Forms.Button();
             this.btnRemoveOverlay = new System.Windows.Forms.Button();
-            this.txtAddress = new System.Windows.Forms.RichTextBox();
             this.chkMouseClick = new System.Windows.Forms.CheckBox();
             this.btnSearchInsidePoly = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,7 +50,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.btnStop = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.button10 = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -108,6 +104,12 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cbxBoudrate = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cbxPorts = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -170,38 +172,27 @@
             this.map.Zoom = 10D;
             this.map.MouseClick += new System.Windows.Forms.MouseEventHandler(this.map_MouseClick);
             // 
-            // btnLoadIntoMap
-            // 
-            this.btnLoadIntoMap.Location = new System.Drawing.Point(6, 355);
-            this.btnLoadIntoMap.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnLoadIntoMap.Name = "btnLoadIntoMap";
-            this.btnLoadIntoMap.Size = new System.Drawing.Size(74, 23);
-            this.btnLoadIntoMap.TabIndex = 18;
-            this.btnLoadIntoMap.Text = "Load";
-            this.btnLoadIntoMap.UseVisualStyleBackColor = true;
-            this.btnLoadIntoMap.Click += new System.EventHandler(this.btnLoadIntoMap_Click);
-            // 
             // txtLng
             // 
-            this.txtLng.Location = new System.Drawing.Point(66, 300);
+            this.txtLng.Location = new System.Drawing.Point(74, 263);
             this.txtLng.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtLng.Name = "txtLng";
-            this.txtLng.Size = new System.Drawing.Size(111, 20);
+            this.txtLng.Size = new System.Drawing.Size(115, 20);
             this.txtLng.TabIndex = 16;
             this.txtLng.TextChanged += new System.EventHandler(this.txtLng_TextChanged);
             // 
             // txtLat
             // 
-            this.txtLat.Location = new System.Drawing.Point(66, 265);
+            this.txtLat.Location = new System.Drawing.Point(74, 220);
             this.txtLat.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtLat.Name = "txtLat";
-            this.txtLat.Size = new System.Drawing.Size(100, 20);
+            this.txtLat.Size = new System.Drawing.Size(113, 20);
             this.txtLat.TabIndex = 17;
             this.txtLat.TextChanged += new System.EventHandler(this.txtLat_TextChanged);
             // 
             // btnClearList
             // 
-            this.btnClearList.Location = new System.Drawing.Point(102, 338);
+            this.btnClearList.Location = new System.Drawing.Point(105, 289);
             this.btnClearList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnClearList.Name = "btnClearList";
             this.btnClearList.Size = new System.Drawing.Size(74, 23);
@@ -210,21 +201,10 @@
             this.btnClearList.UseVisualStyleBackColor = true;
             this.btnClearList.Click += new System.EventHandler(this.btnClearList_Click);
             // 
-            // btnGetRouteInfo
-            // 
-            this.btnGetRouteInfo.Location = new System.Drawing.Point(86, 386);
-            this.btnGetRouteInfo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnGetRouteInfo.Name = "btnGetRouteInfo";
-            this.btnGetRouteInfo.Size = new System.Drawing.Size(74, 23);
-            this.btnGetRouteInfo.TabIndex = 23;
-            this.btnGetRouteInfo.Text = "Get Route";
-            this.btnGetRouteInfo.UseVisualStyleBackColor = true;
-            this.btnGetRouteInfo.Click += new System.EventHandler(this.btnGetRouteInfo_Click);
-            // 
             // lblDistance
             // 
             this.lblDistance.AutoSize = true;
-            this.lblDistance.Location = new System.Drawing.Point(5, 459);
+            this.lblDistance.Location = new System.Drawing.Point(5, 335);
             this.lblDistance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDistance.Name = "lblDistance";
             this.lblDistance.Size = new System.Drawing.Size(85, 13);
@@ -233,7 +213,7 @@
             // 
             // btnAddPoly
             // 
-            this.btnAddPoly.Location = new System.Drawing.Point(8, 415);
+            this.btnAddPoly.Location = new System.Drawing.Point(7, 289);
             this.btnAddPoly.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAddPoly.Name = "btnAddPoly";
             this.btnAddPoly.Size = new System.Drawing.Size(74, 23);
@@ -244,7 +224,7 @@
             // 
             // btnRemoveOverlay
             // 
-            this.btnRemoveOverlay.Location = new System.Drawing.Point(6, 493);
+            this.btnRemoveOverlay.Location = new System.Drawing.Point(73, 351);
             this.btnRemoveOverlay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnRemoveOverlay.Name = "btnRemoveOverlay";
             this.btnRemoveOverlay.Size = new System.Drawing.Size(122, 23);
@@ -253,19 +233,10 @@
             this.btnRemoveOverlay.UseVisualStyleBackColor = true;
             this.btnRemoveOverlay.Click += new System.EventHandler(this.btnRemoveOverlay_Click);
             // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(6, 599);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(162, 118);
-            this.txtAddress.TabIndex = 27;
-            this.txtAddress.Text = "";
-            // 
             // chkMouseClick
             // 
             this.chkMouseClick.AutoSize = true;
-            this.chkMouseClick.Location = new System.Drawing.Point(16, 553);
+            this.chkMouseClick.Location = new System.Drawing.Point(7, 392);
             this.chkMouseClick.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkMouseClick.Name = "chkMouseClick";
             this.chkMouseClick.Size = new System.Drawing.Size(120, 17);
@@ -275,7 +246,7 @@
             // 
             // btnSearchInsidePoly
             // 
-            this.btnSearchInsidePoly.Location = new System.Drawing.Point(14, 774);
+            this.btnSearchInsidePoly.Location = new System.Drawing.Point(105, 610);
             this.btnSearchInsidePoly.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSearchInsidePoly.Name = "btnSearchInsidePoly";
             this.btnSearchInsidePoly.Size = new System.Drawing.Size(74, 23);
@@ -408,12 +379,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.label22);
+            this.panel2.Controls.Add(this.cbxBoudrate);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.cbxPorts);
             this.panel2.Controls.Add(this.pictureBox6);
-            this.panel2.Controls.Add(this.btnStop);
             this.panel2.Controls.Add(this.pictureBox7);
             this.panel2.Controls.Add(this.btnSearchInsidePoly);
             this.panel2.Controls.Add(this.button10);
-            this.panel2.Controls.Add(this.txtAddress);
             this.panel2.Controls.Add(this.chkMouseClick);
             this.panel2.Controls.Add(this.panel14);
             this.panel2.Controls.Add(this.button11);
@@ -424,9 +399,7 @@
             this.panel2.Controls.Add(this.btnAddPoly);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.btnGetRouteInfo);
             this.panel2.Controls.Add(this.button13);
-            this.panel2.Controls.Add(this.btnLoadIntoMap);
             this.panel2.Controls.Add(this.btnClearList);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.pictureBox3);
@@ -438,7 +411,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 69);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 812);
+            this.panel2.Size = new System.Drawing.Size(197, 812);
             this.panel2.TabIndex = 32;
             // 
             // pictureBox6
@@ -453,22 +426,11 @@
             this.pictureBox6.TabIndex = 27;
             this.pictureBox6.TabStop = false;
             // 
-            // btnStop
-            // 
-            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStop.Location = new System.Drawing.Point(0, 733);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(114, 35);
-            this.btnStop.TabIndex = 19;
-            this.btnStop.Text = "STOP CAMERA";
-            this.btnStop.UseVisualStyleBackColor = true;
-            // 
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(2, 220);
+            this.pictureBox7.Location = new System.Drawing.Point(120, 19);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(24, 23);
@@ -575,7 +537,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(-2, 302);
+            this.label18.Location = new System.Drawing.Point(2, 267);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 16);
@@ -600,10 +562,10 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button13.Location = new System.Drawing.Point(24, 81);
+            this.button13.Location = new System.Drawing.Point(28, 78);
             this.button13.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(120, 23);
+            this.button13.Size = new System.Drawing.Size(120, 29);
             this.button13.TabIndex = 5;
             this.button13.Text = "Track Status";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -613,7 +575,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(-2, 266);
+            this.label17.Location = new System.Drawing.Point(5, 221);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 16);
@@ -680,7 +642,7 @@
             this.panel15.Controls.Add(this.lblLongtiude);
             this.panel15.Controls.Add(this.label27);
             this.panel15.Controls.Add(this.label28);
-            this.panel15.Location = new System.Drawing.Point(326, 77);
+            this.panel15.Location = new System.Drawing.Point(349, 79);
             this.panel15.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(128, 80);
@@ -725,7 +687,7 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
             this.panel6.Controls.Add(this.label11);
             this.panel6.Controls.Add(this.label12);
-            this.panel6.Location = new System.Drawing.Point(460, 79);
+            this.panel6.Location = new System.Drawing.Point(501, 76);
             this.panel6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(120, 78);
@@ -759,7 +721,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.label15);
-            this.panel7.Location = new System.Drawing.Point(586, 78);
+            this.panel7.Location = new System.Drawing.Point(625, 77);
             this.panel7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(122, 75);
@@ -794,7 +756,7 @@
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel13.Controls.Add(this.label10);
             this.panel13.Controls.Add(this.label13);
-            this.panel13.Location = new System.Drawing.Point(715, 79);
+            this.panel13.Location = new System.Drawing.Point(751, 76);
             this.panel13.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(132, 74);
@@ -829,7 +791,7 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(853, 79);
+            this.panel4.Location = new System.Drawing.Point(887, 76);
             this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(116, 78);
@@ -866,7 +828,7 @@
             this.panel5.Controls.Add(this.label8);
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.panel16);
-            this.panel5.Location = new System.Drawing.Point(974, 79);
+            this.panel5.Location = new System.Drawing.Point(1007, 76);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(106, 77);
@@ -947,7 +909,7 @@
             this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.panel17.Controls.Add(this.label31);
             this.panel17.Controls.Add(this.label32);
-            this.panel17.Location = new System.Drawing.Point(1087, 84);
+            this.panel17.Location = new System.Drawing.Point(1117, 77);
             this.panel17.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(126, 72);
@@ -983,7 +945,7 @@
             this.panel8.Controls.Add(this.lblLat);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.label16);
-            this.panel8.Location = new System.Drawing.Point(184, 79);
+            this.panel8.Location = new System.Drawing.Point(209, 79);
             this.panel8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(136, 74);
@@ -1029,7 +991,7 @@
             // 
             this.btnStart.BackColor = System.Drawing.Color.Magenta;
             this.btnStart.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnStart.Location = new System.Drawing.Point(1218, 83);
+            this.btnStart.Location = new System.Drawing.Point(1256, 81);
             this.btnStart.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(106, 70);
@@ -1042,7 +1004,7 @@
             // 
             this.btnStartCam2.BackColor = System.Drawing.Color.Teal;
             this.btnStartCam2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnStartCam2.Location = new System.Drawing.Point(1330, 85);
+            this.btnStartCam2.Location = new System.Drawing.Point(1375, 85);
             this.btnStartCam2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnStartCam2.Name = "btnStartCam2";
             this.btnStartCam2.Size = new System.Drawing.Size(106, 66);
@@ -1121,6 +1083,57 @@
             this.label20.TabIndex = 8;
             this.label20.Text = "Video Source Two";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 624);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 36;
+            this.button2.Text = "Connnect";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // cbxBoudrate
+            // 
+            this.cbxBoudrate.FormattingEnabled = true;
+            this.cbxBoudrate.Location = new System.Drawing.Point(68, 477);
+            this.cbxBoudrate.Name = "cbxBoudrate";
+            this.cbxBoudrate.Size = new System.Drawing.Size(121, 21);
+            this.cbxBoudrate.TabIndex = 37;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(5, 480);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(50, 13);
+            this.label22.TabIndex = 38;
+            this.label22.Text = "Boudrate";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 441);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(29, 13);
+            this.label21.TabIndex = 35;
+            this.label21.Text = "Port:";
+            // 
+            // cbxPorts
+            // 
+            this.cbxPorts.FormattingEnabled = true;
+            this.cbxPorts.Location = new System.Drawing.Point(66, 435);
+            this.cbxPorts.Name = "cbxPorts";
+            this.cbxPorts.Size = new System.Drawing.Size(121, 21);
+            this.cbxPorts.TabIndex = 34;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 518);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(177, 68);
+            this.textBox1.TabIndex = 39;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1194,15 +1207,12 @@
 
         private System.Windows.Forms.Splitter splitter1;
         private GMap.NET.WindowsForms.GMapControl map;
-        private System.Windows.Forms.Button btnLoadIntoMap;
         private System.Windows.Forms.TextBox txtLng;
         private System.Windows.Forms.TextBox txtLat;
         private System.Windows.Forms.Button btnClearList;
-        private System.Windows.Forms.Button btnGetRouteInfo;
         private System.Windows.Forms.Label lblDistance;
         private System.Windows.Forms.Button btnAddPoly;
         private System.Windows.Forms.Button btnRemoveOverlay;
-        private System.Windows.Forms.RichTextBox txtAddress;
         private System.Windows.Forms.CheckBox chkMouseClick;
         private System.Windows.Forms.Button btnSearchInsidePoly;
         private System.Windows.Forms.Panel panel1;
@@ -1216,7 +1226,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button button10;
@@ -1271,6 +1280,12 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cbxBoudrate;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cbxPorts;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
